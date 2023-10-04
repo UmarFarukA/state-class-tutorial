@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: darkorange;
+    padding: 2.4rem 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1{
+    font-size: 3.6rem;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+}
+
+.menu{
+    background-color:darkcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.8rem 1.2rem;
+}
+
+.menu p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+.menu .selectOption,
+.menu .inputItem,
+.btnAdd {
+    padding: .4rem 1.6rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.menu .selectOption:focus,
+.menu .inputItem:focus,
+.menu .btnAdd:focus {
+    border: .2rem solid darkcyan;
+}
+
+.btnAdd:hover,
+.btn-clear:hover {
+    background-color: azure;
+    color: rgb(24, 24, 24)
+}
+
+.container {
+    background-color: rgba(228, 80, 31, 0.781);
+    padding: 1.2rem .2rem;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+}
+
+.parkingList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parkingList-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    margin: 1rem 4.8rem;
+    color: whitesmoke;
+}
+
+li {
+    display: flex;
+    gap: .2rem;
+}
+
+.btn-delete {
+    cursor: pointer;
+    color: rgb(217, 18, 18);
+    size: .5rem;
+}
+
+.items{
+    display: flex;
+    gap: .2rem;
+}
+
+ 
+.itemContainer {
+    display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.sortOptions, 
+.btn-clear {
+    padding: .4rem 1.6rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.sortOptions {
+    margin-right: 1rem;
+}
+
+.packed {
+    text-decoration: line-through;
+}
+
+.stats {
+    background-color:  rgba(228, 80, 31, 0.781);
+    text-align: center;
+    padding: 1rem 1.2rem;
+    color: whitesmoke;
+    font-weight: 400;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+}

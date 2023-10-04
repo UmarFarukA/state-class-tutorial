@@ -1,0 +1,42 @@
+form {
+    display: flex;
+    gap: 5px;
+    padding: 12px;
+}
+
+.todo-items {
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+}
+
+input {
+    padding: 4px;
+}
+
+button, 
+.btn-delete {
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+    font-weight: 200;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+button {
+    background-color: brown;
+}
+
+.Container {
+    width: 500px;
+    margin: 25px auto;
+    padding: auto;
+    box-shadow: 4px whitesmoke;
+    background-color: azure;
+}
+
+.btn-delete {
+    background-color: red;
+}

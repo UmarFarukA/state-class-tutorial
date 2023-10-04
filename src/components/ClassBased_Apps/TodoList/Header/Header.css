@@ -1,0 +1,11 @@
+.header {
+    padding: 25px;
+    margin: 15px;
+}
+
+.header-title {
+    padding: 8px;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: brown;
+}
