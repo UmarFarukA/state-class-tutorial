@@ -79,14 +79,24 @@ function Course() {
                             <p>{state.messages[state.step - 1]}</p>
                         </div>
                         <div className="navigation">
-                            <button className="btn" onClick={handlePrevious}>Previous</button>
-                            <button className="btn" onClick={handleNext}>Next</button>
+                            <Button onClick={handlePrevious}>
+                                <span>👈</span> Previous
+                            </Button>
+                            <Button onClick={handleNext}>
+                                Next <span>👉</span>
+                            </Button>
                         </div>
                     </div>
 
                 </div>
             )}
         </>
+    )
+}
+
+function Button({onClick, children}) {
+    return (
+        <button className="btn" onClick={onClick}>{children}</button>
     )
 }
 

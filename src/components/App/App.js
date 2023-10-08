@@ -1,11 +1,10 @@
-import React from 'react';
-import Faraway from '../ClassBased_Apps/Faraway/Faraway';
-
+import React from "react";
+import TipCalculator from "../ClassBased_Apps/TipCalculator/TipCalculator";
 
 function App() {
   return (
     <React.Fragment>
-      <Faraway />
+      <TipCalculator />
     </React.Fragment>
   );
 }

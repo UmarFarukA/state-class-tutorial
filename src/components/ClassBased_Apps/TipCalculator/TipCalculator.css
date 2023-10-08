@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 24px 32px;
+  padding: 48px;
+}
+
+.content {
+  display: flex;
+  gap: 12px;
+}
+
+.output {
+  margin-top: 24px;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.reset {
+  margin-top: 1.2rem;
+}

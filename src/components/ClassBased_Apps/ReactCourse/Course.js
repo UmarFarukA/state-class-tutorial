@@ -49,14 +49,27 @@ class Course extends React.Component {
                                 <p>{this.state.messages[this.state.step - 1]}</p>
                             </div>
                             <div className="navigation">
-                                <button className="btn" onClick={this.handlePrevious}>Previous</button>
-                                <button className="btn" onClick={this.handleNext}>Next</button>
+                                <Button onClick={this.handlePrevious}>
+                                    <span>👈</span>Previous
+                                </Button>
+                                <Button onClick={this.handleNext}>
+                                    Next<span>👉</span>
+                                </Button>
                             </div>
                         </div>
 
                     </div>
                 )}
             </>
+        )
+    }
+}
+
+class Button extends React.Component {
+
+    render() {
+        return (
+            <button className="btn" onClick={this.props.onClick}>{this.props.children}</button>
         )
     }
 }
