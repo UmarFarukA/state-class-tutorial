@@ -1,10 +1,10 @@
 import React from "react";
-import TipCalculator from "../ClassBased_Apps/TipCalculator/TipCalculator";
+import Main from "../FuncBased_Apps/EatSplit/eat";
 
 function App() {
   return (
     <React.Fragment>
-      <TipCalculator />
+      <Main />
     </React.Fragment>
   );
 }
