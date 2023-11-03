@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../FuncBased_Apps/EatSplit/eat";
+import Main from "../ClassBased_Apps/Eat&Split/Eat";
 
 function App() {
   return (
