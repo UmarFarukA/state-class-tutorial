@@ -33,8 +33,14 @@ class Main extends React.Component {
       friendBalance: 0,
       selectedFriend: "",
       showBillForm: null,
+      billValue: 0,
+      userExpense: 0,
+      otherExpense: 0,
     };
   }
+
+  otherExpense =
+    parseInt(this.state.billValue) - parseInt(this.state.userExpense);
 
   handleShowAddFriendForm = () => {
     this.setState({
@@ -84,6 +90,15 @@ class Main extends React.Component {
       selectedFriend: friend[0],
     });
   };
+
+  handleUserBill = (e) => {
+    this.setState({ userExpense: e.target.value });
+  };
+
+  handleBillValue = (e) => {
+    this.setState({ billValue: e.target.value });
+  };
+
   render() {
     return (
       <div className="container">
@@ -110,7 +125,14 @@ class Main extends React.Component {
           </div>
         </div>
         {this.state.showBillForm && (
-          <BillForm activeFriend={this.state.selectedFriend} />
+          <BillForm
+            activeFriend={this.state.selectedFriend}
+            billValue={this.state.billValue}
+            userBill={this.state.userExpense}
+            handleUserBill={this.handleUserBill}
+            handleBillValue={this.handleBillValue}
+            otherExpense={this.otherExpense}
+          />
         )}
       </div>
     );
@@ -214,16 +236,24 @@ class BillForm extends React.Component {
           </h2>
           <div className="fields">
             <label>💷 Bill value</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={Number(this.props.billValue)}
+              onChange={this.props.handleBillValue}
+            />
           </div>
 
           <div className="fields">
             <label>🧍Your expense</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={this.props.userBill}
+              onChange={this.props.handleUserBill}
+            />
           </div>
           <div className="fields">
             <label>🧑‍🤝‍🧑{this.props.activeFriend.name}'s expense</label>
-            <input type="text" disabled />
+            <input type="text" disabled value={this.props.otherExpense} />
           </div>
           <div className="fields">
             <label>😀 Who is paying the bill</label>
