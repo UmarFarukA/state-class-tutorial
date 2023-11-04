@@ -28,6 +28,11 @@ class Main extends React.Component {
     this.state = {
       friends: initialFriends,
       showAddForm: false,
+      friendName: "",
+      friendImage: "https://i.pravatar.cc/48?u=",
+      friendBalance: 0,
+      selectedFriend: "",
+      showBillForm: null,
     };
   }
 
@@ -36,12 +41,67 @@ class Main extends React.Component {
       showAddForm: !this.state.showAddForm,
     });
   };
+
+  handleAddFriendName = (e) => {
+    this.setState({
+      friendName: e.target.value,
+    });
+  };
+
+  handleAddFriendImage = (e) => {
+    this.setState({
+      friendImage: e.target.value,
+    });
+  };
+
+  handleAddFriend = (e) => {
+    e.preventDefault();
+    if (this.state.friendName === "" || this.state.friendImage === "") return;
+
+    const newId = new Date();
+
+    this.setState((prevFriend) => {
+      const newFriend = {
+        name: prevFriend.friendName,
+        image: prevFriend.friendImage + `${newId}`,
+        balance: prevFriend.friendBalance,
+        id: newId,
+      };
+
+      return {
+        friends: [...prevFriend.friends, newFriend],
+        friendName: "",
+        friendImage: "https://i.pravatar.cc/48?u=",
+        showAddForm: false,
+      };
+    });
+  };
+
+  handleSelectFriend = (id) => {
+    const friend = this.state.friends.filter((friend) => friend.id === id);
+    this.setState({
+      showBillForm: true,
+      selectedFriend: friend[0],
+    });
+  };
   render() {
     return (
       <div className="container">
         <div className="sidebar">
-          <FriendsList friends={this.state.friends} />
-          {this.state.showAddForm && <AddFriendForm />}
+          <FriendsList
+            friends={this.state.friends}
+            selectFriend={this.handleSelectFriend}
+            active={this.state.showBillForm}
+          />
+          {this.state.showAddForm && (
+            <AddFriendForm
+              addFriend={this.handleAddFriend}
+              fname={this.state.friendName}
+              fimage={this.state.friendImage}
+              addFName={this.handleAddFriendName}
+              addFImage={this.handleAddFriendImage}
+            />
+          )}
 
           <div className="btn-add">
             <Button click={this.handleShowAddFriendForm}>
@@ -49,21 +109,10 @@ class Main extends React.Component {
             </Button>
           </div>
         </div>
-        <BillForm />
+        {this.state.showBillForm && (
+          <BillForm activeFriend={this.state.selectedFriend} />
+        )}
       </div>
-    );
-  }
-}
-
-class Button extends React.Component {
-  constructor(props) {
-    super();
-  }
-  render() {
-    return (
-      <button className="btn" onClick={this.props.click}>
-        {this.props.children}
-      </button>
     );
   }
 }
@@ -76,7 +125,12 @@ class FriendsList extends React.Component {
     return (
       <ul>
         {this.props.friends.map((friend) => (
-          <Friend friend={friend} />
+          <Friend
+            friend={friend}
+            key={friend.id}
+            selectFriend={this.props.selectFriend}
+            activeSelection={this.props.active}
+          />
         ))}
       </ul>
     );
@@ -93,7 +147,7 @@ class Friend extends React.Component {
         <img src={this.props.friend.image} alt={this.props.friend.name} />
         <p>
           <h4>{this.props.friend.name}</h4>
-          <p
+          <span
             className={
               this.props.friend.balance < 0
                 ? "red"
@@ -109,9 +163,15 @@ class Friend extends React.Component {
               ? "You and " + this.props.friend.name + " are even"
               : this.props.friend.name + ` owes you`}{" "}
             ${Math.abs(this.props.friend.balance)}
-          </p>
+          </span>
         </p>
-        <Button>Select</Button>
+        <Button
+          click={() => {
+            this.props.selectFriend(this.props.friend.id);
+          }}
+        >
+          Select
+        </Button>
       </li>
     );
   }
@@ -120,17 +180,24 @@ class Friend extends React.Component {
 class AddFriendForm extends React.Component {
   render() {
     return (
-      <form className="addForm">
+      <form className="addForm" onSubmit={this.props.addFriend}>
         <div className="fields">
           <label>🧑‍🤝‍🧑Friend name</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={this.props.fname}
+            onChange={this.props.addFName}
+          />
         </div>
 
         <div className="fields">
           <label>🖼️Image name</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={this.props.fimage}
+            onChange={this.props.addFImage}
+          />
         </div>
-
         <Button>Add</Button>
       </form>
     );
@@ -142,7 +209,9 @@ class BillForm extends React.Component {
     return (
       <div className="bill-form">
         <form>
-          <h2 className="form-title">split a Bill with X</h2>
+          <h2 className="form-title">
+            split a Bill with {this.props.activeFriend.name}
+          </h2>
           <div className="fields">
             <label>💷 Bill value</label>
             <input type="text" />
@@ -153,14 +222,16 @@ class BillForm extends React.Component {
             <input type="text" />
           </div>
           <div className="fields">
-            <label>🧑‍🤝‍🧑X's expense</label>
+            <label>🧑‍🤝‍🧑{this.props.activeFriend.name}'s expense</label>
             <input type="text" disabled />
           </div>
           <div className="fields">
             <label>😀 Who is paying the bill</label>
             <select>
               <option value="user">User</option>
-              {/* <option value={friend.name}>{friend.name}</option> */}
+              <option value={this.props.activeFriend.name}>
+                {this.props.activeFriend.name}
+              </option>
             </select>
           </div>
         </form>
@@ -169,6 +240,19 @@ class BillForm extends React.Component {
           <Button>Split Bill</Button>
         </div>
       </div>
+    );
+  }
+}
+
+class Button extends React.Component {
+  constructor(props) {
+    super();
+  }
+  render() {
+    return (
+      <button className="btn" onClick={this.props.click}>
+        {this.props.children}
+      </button>
     );
   }
 }

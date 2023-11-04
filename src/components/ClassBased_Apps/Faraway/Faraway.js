@@ -156,26 +156,6 @@ class PackingList extends Component {
   }
 
   render() {
-    // if (this.props.sort === "input") {
-    //     return this.setState({
-    //         sortItems: this.props.state
-    //     })
-    // }
-
-    // if (this.props.sort === "description") {
-    //     this.setState({
-    //         sortItems: this.props.state.slice().sort((a, b) => a.description.localeCompare(b.description))
-    //     })
-    // }
-
-    // if (this.props.sort === "packed") {
-    //     this.setState({
-    //         sortItems: this.props.state.slice((a, b) => Number(a.packed) - Number(b.packed))
-    //     })
-    // }
-
-    // console.log(sortItems)
-
     return (
       <div className="container">
         <ul className="parkingList">
