@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../FuncBased_Apps/HowReactWorks/How";
+import Main from "../FuncBased_Apps/usePopcorn/popcorn";
 
 function App() {
   return (

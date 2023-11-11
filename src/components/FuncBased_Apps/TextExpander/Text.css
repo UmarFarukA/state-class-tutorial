@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 50px;
+  padding: 12px;
+}
+
+.content {
+  display: inline-block;
+  gap: 12px;
+}
+
+p > button {
+  margin-left: 8px;
+}
