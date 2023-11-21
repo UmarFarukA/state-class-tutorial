@@ -20,19 +20,11 @@ function Main() {
           `https://${host}/latest?amount=${amount}&from=${from}&to=${to}`
         );
         const data = await res.json();
-        console.log(data.rates);
-        if ((from === "EUR") & (to === "USD")) {
-          setResult(data.rates.USD);
-        } else if ((from === "USD") & (to === "EUR")) {
-          setResult(data.rates.EUR);
-        } else if ((from === "EUR") & (to === "EUR")) {
-          setResult(data.rates.EUR);
-        } else if ((from === "USD") & (to === "USD")) {
-          setResult(data.rates.USD);
-        }
-        console.log(amount, to, from);
+
+        setResult(data.rates[to]);
       }
 
+      if (from === to) return setResult(amount);
       getRate();
     },
     [amount, from, to]
@@ -45,12 +37,16 @@ function Main() {
         <CurrencyType>
           <select value={from} onChange={(e) => setFrom(e.target.value)}>
             <option value="USD">USD</option>
+            <option value="INR">INR</option>
+            <option value="CAD">CAD</option>
             <option value="EUR">EUR</option>
           </select>
         </CurrencyType>
         <CurrencyType>
           <select value={to} onChange={(e) => setTo(e.target.value)}>
             <option value="USD">USD</option>
+            <option value="INR">INR</option>
+            <option value="CAD">CAD</option>
             <option value="EUR">EUR</option>
           </select>
         </CurrencyType>
