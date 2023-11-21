@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../FuncBased_Apps/usePopcorn/popcorn";
+import Main from "../FuncBased_Apps/CurrencyConverter/Currency";
 
 function App() {
   return (
