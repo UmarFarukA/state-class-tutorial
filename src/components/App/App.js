@@ -1,10 +1,10 @@
 import React from "react";
-import Main from "../FuncBased_Apps/CurrencyConverter/Currency";
+import Weather from "../FuncBased_Apps/WeatherApp/Weather";
 
 function App() {
   return (
     <React.Fragment>
-      <Main />
+      <Weather />
     </React.Fragment>
   );
 }
