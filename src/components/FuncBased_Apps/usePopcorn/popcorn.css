@@ -213,8 +213,12 @@ body {
 }
 
 .btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   padding: 4px;
   background-color: rgb(192, 16, 16);
   border: none;
+  cursor: pointer;
 }

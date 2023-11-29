@@ -1,10 +1,10 @@
 import React from "react";
-import Weather from "../FuncBased_Apps/WeatherApp/Weather";
+import MainApp from "../FuncBased_Apps/usePopcorn/popcorn";
 
 function App() {
   return (
     <React.Fragment>
-      <Weather />
+      <MainApp />
     </React.Fragment>
   );
 }

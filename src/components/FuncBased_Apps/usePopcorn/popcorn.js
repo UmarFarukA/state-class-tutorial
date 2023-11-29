@@ -67,20 +67,28 @@ function Main({ query, movies, setMovies }) {
   const [watchedList, setWatchedList] = useState([]);
   const [showWatched, setShowWatched] = useState(false);
   const [movie, setMovie] = useState([]);
-  const [isClose, setIsClose] = useState(false);
+  const [isClose, setIsClose] = useState(true);
 
   const handleClose = () => {
-    setIsClose((prevState) => !prevState);
+    setMovieId(null);
     // console.log(isClose);
   };
   const handleSelectedMovie = (id) => {
-    setMovieId(id);
+    setMovieId((movieId) => (movieId === id ? null : id));
+    setShowWatched(false);
+    console.log(id);
   };
   const err = "⛔ Error fetching Movie";
 
   const handleAddMovie = (id) => {
     setWatchedList((prevMovies) => [...prevMovies, movie]);
     setShowWatched(true);
+  };
+
+  const handleMovieDelete = (id) => {
+    setWatchedList((watchedList) =>
+      watchedList.filter((movie) => movie.imdbID !== id)
+    );
   };
 
   useEffect(
@@ -135,11 +143,15 @@ function Main({ query, movies, setMovies }) {
         {!hasError && <Error message={hasError} />}
       </Box>
       <Box className="box">
-        {(movieId === null) | isClose ? (
+        {movieId === null || !isClose ? (
           <Summary />
         ) : showWatched ? (
           <>
-            <Summary /> <WatchedListMovies watchedList={watchedList} />
+            <Summary />{" "}
+            <WatchedListMovies
+              watchedList={watchedList}
+              handleMovieDelete={handleMovieDelete}
+            />
           </>
         ) : (
           <MovieDetails
@@ -148,6 +160,7 @@ function Main({ query, movies, setMovies }) {
             movie={movie}
             setMovie={setMovie}
             onclose={handleClose}
+            key={movieId}
           />
         )}
       </Box>
@@ -206,7 +219,7 @@ function Error({ message }) {
 function MoviesList({ movies, handleSelectedMovie }) {
   return (
     <ul>
-      {movies.map((movie, key) => {
+      {movies.map((movie) => {
         return (
           <Movie
             key={movie.imdbID}
@@ -242,6 +255,7 @@ function Button({ children, click, className }) {
 }
 
 function MovieDetails({ movieId, handleAddMovie, setMovie, movie, onclose }) {
+  // console.log(`From the movieDetails ${movieId}`);
   useEffect(
     function () {
       async function getSelectedMovie() {
@@ -297,12 +311,16 @@ function MovieDetails({ movieId, handleAddMovie, setMovie, movie, onclose }) {
   );
 }
 
-function WatchedListMovies({ watchedList }) {
+function WatchedListMovies({ watchedList, handleMovieDelete }) {
   return (
     <>
       <ul>
         {watchedList.map((movie) => (
-          <WatchedMovie key={movie.imdbID} movie={movie} />
+          <WatchedMovie
+            key={movie.imdbID}
+            movie={movie}
+            handleMovieDelete={handleMovieDelete}
+          />
         ))}
       </ul>
     </>
