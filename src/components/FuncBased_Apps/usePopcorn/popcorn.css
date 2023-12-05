@@ -208,7 +208,7 @@ body {
 .watched-movie-props div {
   display: flex;
   justify-content: space-between;
-  /* align-content: center; */
+  align-content: center;
   gap: 1.2rem;
 }
 

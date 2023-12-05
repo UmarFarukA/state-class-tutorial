@@ -68,6 +68,12 @@ function Main({ query, movies, setMovies }) {
   const [showWatched, setShowWatched] = useState(false);
   const [movie, setMovie] = useState([]);
   const [isClose, setIsClose] = useState(true);
+  const [watchedSummary, setWatchedSummary] = useState({
+    count: 0,
+    rating: 0,
+    userRating: 0,
+    minutes: 0,
+  });
 
   const handleClose = () => {
     setMovieId(null);
@@ -76,13 +82,23 @@ function Main({ query, movies, setMovies }) {
   const handleSelectedMovie = (id) => {
     setMovieId((movieId) => (movieId === id ? null : id));
     setShowWatched(false);
-    console.log(id);
   };
   const err = "⛔ Error fetching Movie";
 
   const handleAddMovie = (id) => {
     setWatchedList((prevMovies) => [...prevMovies, movie]);
     setShowWatched(true);
+    console.log(movie);
+    const result = {
+      ...watchedList,
+      count: parseInt(watchedList.count + 1),
+      rating: parseInt(movie.rating + movie.imdbRating),
+      userRating: 1,
+      minutes:
+        parseInt(movie.minutes) + parseInt(movie.Runtime.split(" ").at(0)),
+    };
+
+    setWatchedSummary(result);
   };
 
   const handleMovieDelete = (id) => {
@@ -144,10 +160,10 @@ function Main({ query, movies, setMovies }) {
       </Box>
       <Box className="box">
         {movieId === null || !isClose ? (
-          <Summary />
+          <Summary watch={watchedSummary} />
         ) : showWatched ? (
           <>
-            <Summary />{" "}
+            <Summary watch={watchedSummary} />{" "}
             <WatchedListMovies
               watchedList={watchedList}
               handleMovieDelete={handleMovieDelete}
@@ -172,28 +188,29 @@ function Box({ children, className }) {
   return <div className={className}>{children}</div>;
 }
 
-function Summary() {
+function Summary({ watch }) {
+  console.log(watch);
   return (
     <header className="box-header">
       <h4>Movies You Watched</h4>
       <div className="movies-rec">
         <div className="minutes">
           <div>
-            <span>#️⃣</span>
-            <span>X Movies</span>
+            <span>#️⃣ </span>
+            <span>{watch.count} Movies</span>
           </div>
         </div>
         <div>
           <span>⭐ </span>
-          <span>x.x</span>
+          <span>{watch.rating}</span>
         </div>
         <div>
           <span>🌟 </span>
-          <span>x.x</span>
+          <span>{watch.userRating}</span>
         </div>
         <div>
           <span>⏲️ </span>
-          <span>x.x min</span>
+          <span>{watch.minutes} min</span>
         </div>
       </div>
     </header>
@@ -312,6 +329,8 @@ function MovieDetails({ movieId, handleAddMovie, setMovie, movie, onclose }) {
 }
 
 function WatchedListMovies({ watchedList, handleMovieDelete }) {
+  // console.log(watchedList);
+
   return (
     <>
       <ul>

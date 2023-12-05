@@ -1,10 +1,10 @@
 import React from "react";
-import MainApp from "../FuncBased_Apps/usePopcorn/popcorn";
+import Counter from "../FuncBased_Apps/DaysDate_v3/DaysDate";
 
 function App() {
   return (
     <React.Fragment>
-      <MainApp />
+      <Counter />
     </React.Fragment>
   );
 }
