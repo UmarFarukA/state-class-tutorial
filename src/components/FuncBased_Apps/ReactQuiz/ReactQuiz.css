@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222222;
+}
+
+.container {
+  margin: 2.4rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  /* border: 2px solid yellow; */
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 200;
+  font-family: "Overlock";
+  margin-bottom: 1rem;
+  color: azure;
+}
+
+.app-header img {
+  width: 26.4rem;
+  height: 12.4rem;
+  /* float: right; */
+}

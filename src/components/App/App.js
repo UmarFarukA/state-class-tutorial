@@ -1,10 +1,10 @@
 import React from "react";
-import Counter from "../FuncBased_Apps/DaysDate_v3/DaysDate";
+import MainApp from "../FuncBased_Apps/ReactQuiz/ReactQuiz";
 
 function App() {
   return (
     <React.Fragment>
-      <Counter />
+      <MainApp />
     </React.Fragment>
   );
 }
