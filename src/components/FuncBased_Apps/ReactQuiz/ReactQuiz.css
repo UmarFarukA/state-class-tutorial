@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  margin: 2.4rem auto;
+  margin: 1.8rem auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -20,25 +20,112 @@ body {
 .app-main {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.4rem;
   justify-content: center;
   align-items: center;
 }
 
 .app-header {
   display: flex;
-  justify-content: center;
+
   align-items: center;
   text-transform: uppercase;
   font-size: 1.8rem;
   font-weight: 200;
   font-family: "Overlock";
-  margin-bottom: 1rem;
+
   color: azure;
 }
 
 .app-header img {
   width: 26.4rem;
   height: 12.4rem;
-  /* float: right; */
+  margin-left: 1.2rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  color: azure;
+  margin: 0.6rem 0;
+  width: 100%;
+}
+
+.start {
+  font-weight: 300;
+  color: azure;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.start .btn-start {
+  margin-top: 1rem;
+}
+
+.btn-start {
+  width: 50%;
+  padding: 0.8rem 1.8rem;
+  background-color: #454444;
+  color: azure;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-next {
+  margin-top: 0.8rem;
+  float: right;
+}
+
+.btn-start:hover {
+  color: #454444;
+  background-color: #fff;
+  font-weight: 400;
+}
+
+.error,
+.loader {
+  text-align: center;
+  color: azure;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.questions {
+  color: azure;
+}
+
+.option {
+  padding: 1.2rem 1.8rem;
+  background-color: #454444;
+  border-radius: 0.5rem;
+  border: none;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.correct {
+  background-color: rgb(10, 196, 134);
+}
+
+.wrong {
+  background-color: rgb(236, 102, 102);
+}
+
+.option:hover {
+  cursor: pointer;
+  background-color: #565555;
+  transition: 0.3s all;
+}
+
+.finish {
+  background-color: aqua;
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
 }
