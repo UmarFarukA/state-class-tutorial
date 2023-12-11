@@ -10,13 +10,17 @@ import "./ReactQuiz.css";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
 
+const SEC_PER_QUESTION = 10;
+
 const initialState = {
   questions: [],
   status: "loading",
   index: 0,
   answer: null,
   points: 0,
+  minSecond: null,
 };
+
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
@@ -24,7 +28,11 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
-      return { ...state, status: "start" };
+      return {
+        ...state,
+        status: "start",
+        minSecond: state.questions.length * SEC_PER_QUESTION - 1,
+      };
     case "newAnswer":
       return {
         ...state,
@@ -42,6 +50,12 @@ function reducer(state, action) {
         index: 0,
         answer: null,
         points: 0,
+      };
+    case "tick":
+      return {
+        ...state,
+        minSecond: state.minSecond - 1,
+        status: state.minSecond === 0 ? "end" : state.status,
       };
     default:
       throw new Error("Unknown Action");
@@ -64,40 +78,43 @@ function MainApp() {
   );
   return (
     <div className="container">
-      <Header />
-      <Main>
-        {state.status === "loading" && <Loader />}
-        {state.status === "error" && <Error />}
-        {state.status === "ready" && (
-          <Start numQuestions={numQuestions} dispatch={dispatch} />
-        )}
-        {state.status === "start" && (
-          <>
-            <Progress
-              index={state.index}
-              numQuestions={numQuestions}
+      <div className="content">
+        <Header />
+        <Main>
+          {state.status === "loading" && <Loader />}
+          {state.status === "error" && <Error />}
+          {state.status === "ready" && (
+            <Start numQuestions={numQuestions} dispatch={dispatch} />
+          )}
+          {state.status === "start" && (
+            <>
+              <Progress
+                index={state.index}
+                numQuestions={numQuestions}
+                points={state.points}
+                maxPossiblePoints={maxPossiblePoints}
+                answer={state.answer}
+              />
+              <Questions
+                questions={state.questions[state.index]}
+                dispatch={dispatch}
+                answer={state.answer}
+                index={state.index}
+                numQuestions={numQuestions}
+                minSecond={state.minSecond}
+              />
+            </>
+          )}
+
+          {state.status === "end" && (
+            <FinishScreen
               points={state.points}
               maxPossiblePoints={maxPossiblePoints}
-              answer={state.answer}
-            />
-            <Questions
-              questions={state.questions[state.index]}
               dispatch={dispatch}
-              answer={state.answer}
-              index={state.index}
-              numQuestions={numQuestions}
             />
-          </>
-        )}
-
-        {state.status === "end" && (
-          <FinishScreen
-            points={state.points}
-            maxPossiblePoints={maxPossiblePoints}
-            dispatch={dispatch}
-          />
-        )}
-      </Main>
+          )}
+        </Main>
+      </div>
     </div>
   );
 }

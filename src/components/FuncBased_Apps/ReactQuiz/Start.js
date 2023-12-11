@@ -5,7 +5,10 @@ export default function Start({ numQuestions, dispatch }) {
     <div className="start">
       <h2> Welcome to The React Quiz</h2>
       <h3>{numQuestions} questions to test your React Mastery</h3>
-      <button className="btn-start" onClick={() => dispatch({ type: "start" })}>
+      <button
+        className="btn btn-start"
+        onClick={() => dispatch({ type: "start" })}
+      >
         Let's Start
       </button>
     </div>

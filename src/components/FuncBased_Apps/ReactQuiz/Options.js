@@ -5,7 +5,7 @@ export default function Options({ questions, dispatch, answer }) {
   return (
     <>
       {questions.options.map((option, index) => (
-        <div
+        <button
           className={`option ${index === answer ? "option" : ""} ${
             hasAnswered
               ? index === questions.correctOption
@@ -26,7 +26,7 @@ export default function Options({ questions, dispatch, answer }) {
           disabled={hasAnswered}
         >
           {option}
-        </div>
+        </button>
       ))}
     </>
   );

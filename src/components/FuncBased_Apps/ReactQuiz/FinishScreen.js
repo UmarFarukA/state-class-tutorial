@@ -10,7 +10,7 @@ export default function FinishScreen({ dispatch, points, maxPossiblePoints }) {
         <strong>{Math.ceil(pointsPercent)}%</strong>
       </div>
       <button
-        className="btn-start btn-next"
+        className="btn btn-start btn-next"
         onClick={() => dispatch({ type: "restart" })}
       >
         Restart

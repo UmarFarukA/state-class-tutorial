@@ -4,7 +4,7 @@ export default function NextButton({ dispatch, numQuestions, index }) {
   if (index < numQuestions - 1)
     return (
       <button
-        className="btn-start btn-next"
+        className="btn btn-next"
         onClick={() => dispatch({ type: "nextQuestion" })}
       >
         Next
@@ -14,7 +14,7 @@ export default function NextButton({ dispatch, numQuestions, index }) {
   if (index === numQuestions - 1)
     return (
       <button
-        className="btn-start btn-next"
+        className="btn btn-next"
         onClick={() => dispatch({ type: "end" })}
       >
         Finish

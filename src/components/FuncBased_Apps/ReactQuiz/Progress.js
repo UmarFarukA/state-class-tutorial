@@ -8,17 +8,17 @@ export default function Progress({
   answer,
 }) {
   return (
-    <>
+    <div className="progress">
       <progress max={numQuestions} value={index + Number(answer !== null)} />
       <header className="progress-header">
-        <p>
+        <span>
           Question {index + 1} / {numQuestions}
-        </p>
+        </span>
 
-        <p>
+        <span>
           {points} / {maxPossiblePoints}
-        </p>
+        </span>
       </header>
-    </>
+    </div>
   );
 }
