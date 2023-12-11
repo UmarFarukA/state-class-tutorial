@@ -1,10 +1,10 @@
 import React from "react";
-import MainApp from "../FuncBased_Apps/ReactQuiz/ReactQuiz";
+import Main from "../FuncBased_Apps/useReducerBankAccount/Bank";
 
 function App() {
   return (
     <React.Fragment>
-      <MainApp />
+      <Main />
     </React.Fragment>
   );
 }
