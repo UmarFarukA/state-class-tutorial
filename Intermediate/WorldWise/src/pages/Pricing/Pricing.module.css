@@ -1,0 +1,52 @@
+.container {
+  margin: auto;
+  padding: 1.2rem 2.4rem;
+  height: calc(100vh - 5vh);
+  border: 1.2rem solid white;
+  /* background-image: url("/bg.jpg");
+    background-color: #242a2e; */
+  background-image: linear-gradient(
+      rgba(36, 42, 46, 0.9),
+      rgba(36, 42, 46, 0.8)
+    ),
+    url("/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  position: relative;
+}
+
+.pricingBox {
+  margin-top: 4.2rem;
+  margin-left: 3.2rem;
+  margin-right: 3.2rem;
+}
+
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+}
+
+.pricingCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+.pricingCaption h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.pricingCaption p {
+  line-height: 1.2rem;
+  font-weight: 600;
+}
+
+.pricingImage img {
+  width: 24.4rem;
+  height: 28.4rem;
+}

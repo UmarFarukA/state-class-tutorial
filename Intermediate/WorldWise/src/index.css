@@ -1,0 +1,50 @@
+:root {
+  --color-brand--1: #ffb545;
+  --color-brand--2: #00c46a;
+
+  --color-dark--0: #242a2e;
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: #d6dee0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #fff;
+}
+
+.btn,
+.login {
+  cursor: pointer;
+
+  background-color: #14da28;
+  color: #fff;
+  font-weight: 300;
+  font-size: large;
+
+  border-radius: 0.6rem;
+  border: none;
+}
+
+.btn {
+  text-transform: uppercase;
+  padding: 0.8rem 1.8rem;
+}
+
+.login {
+  padding: 0.4rem 1rem;
+}
+
+.btn:hover,
+.login:hover {
+  background-color: #09f320;
+  color: #242a2e;
+}
