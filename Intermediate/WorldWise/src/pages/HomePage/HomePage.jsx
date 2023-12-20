@@ -1,6 +1,7 @@
 import PageNav from "../../components/PageNav";
 import styles from "./HomePage.module.css";
 import "../../index.css";
+import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -18,7 +19,9 @@ export default function HomePage() {
             how you have wondered the world.
           </div>
 
-          <button className="btn">Start tracking now</button>
+          <NavLink to="app">
+            <button className="btn">Start tracking now</button>
+          </NavLink>
         </section>
       </main>
     </div>
