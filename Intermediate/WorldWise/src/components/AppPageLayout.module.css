@@ -1,0 +1,9 @@
+.container {
+  margin: auto;
+  border: 1rem solid white;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}

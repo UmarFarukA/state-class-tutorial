@@ -6,8 +6,8 @@
   /* background-image: url("/bg.jpg");
   background-color: #242a2e; */
   background-image: linear-gradient(
-      rgba(36, 42, 46, 0.9),
-      rgba(36, 42, 46, 0.8)
+      rgba(12, 13, 14, 0.897),
+      rgba(18, 18, 19, 0.8)
     ),
     url("/bg.jpg");
   background-position: center;
