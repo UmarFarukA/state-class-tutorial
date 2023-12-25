@@ -1,0 +1,37 @@
+.form {
+  background-color: rgb(59, 63, 72);
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-radius: 0.4rem;
+}
+.inputFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.inputFields label {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.inputFields input,
+.inputFields textarea {
+  padding: 0.6rem 0.8rem;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+.inputFields input:focus,
+.inputFields textarea:focus {
+  outline: none;
+}
+
+.inputControls {
+  display: flex;
+  justify-content: space-between;
+}

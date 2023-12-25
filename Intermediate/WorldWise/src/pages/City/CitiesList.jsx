@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import CityItem from "./CityItem";
-import Message from "../../components/Message/Message";
+import Message from "../../components/Message";
 import Loading from "../../components/Loading";
 
 export default function CitiesList({ cities, isLoading }) {
